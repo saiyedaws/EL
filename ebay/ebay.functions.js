@@ -26,7 +26,15 @@ function pastePrice(product) {
 
 function pasteTitle(product) {
 	//document.querySelector("input#editpane_title").value = product.custom_title;
-	document.querySelector("input#editpane_title").value = product.custom_title;
+
+	var title = product.custom_title;
+
+	if(title.length > 80) 
+	{
+		title = title.substring(0,77) + "...";
+	}
+
+	document.querySelector("input#editpane_title").value = title;
 }
 
 function pasteAsin(product) {
