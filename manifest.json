@@ -55,6 +55,7 @@
       "matches": ["*://amazon.ca/*", "*://*.amazon.ca/*", "*://amazon.com/*", "*://*.amazon.com/*"],
       "js": [
         "libraries/jquery.min.js",
+        "libraries/jquery-ui.min.js",
         "libraries/htmlSanitizer.js",
         "libraries/custom.functions.js",
 
@@ -71,11 +72,18 @@
          "amazon/amazon.functions.js",
           "amazon/amazon.js",
 
-          "amazon/amazon_vero_function.js"
-        
+          "amazon/amazon_vero_function.js",
+          "amazon/amazon_check_duplicate.js",
+          "amazon/amazon_title_builder.js"
         
         
         ],
+        "css": ["amazon/amazon_title_builder.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://www.ebay.ca/sh/lst/active*"],
+      "js": ["libraries/jquery.min.js","ebay/ebay.active_listings.js"],
       "run_at": "document_end"
     }
   ],
@@ -88,7 +96,7 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": ["background/background.config.js", "background/background.functions.js", "background/background.js"]
+    "scripts": ["background/background.config.js", "background/background.functions.js", "background/background.js", "background/background.tracker.js"]
     
   }
 }

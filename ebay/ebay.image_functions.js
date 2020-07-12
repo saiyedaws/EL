@@ -15,10 +15,19 @@ function convertImgToBase64(url, callback, outputFormat) {
 	img.src = url;
 }
 
-function uploadImages(product) {
-	//var imgUrls = product.main_sd_images;
 
+
+
+function uploadImages(product) 
+{
+	//var imgUrls = product.main_sd_images;
 	var imgUrls = product.main_hd_images;
+
+	if(imgUrls.length < 1){
+		imgUrls = product.main_sd_images;
+	}
+
+
 
 	var imgName = product.custom_title;
 	//var imgName = product.filteredTitle;
@@ -47,6 +56,9 @@ function uploadImages(product) {
 		});
 	}
 
+
+setTimeout(() => 
+{
 	bg_port.postMessage({
 		from: "ebay",
 		type: "upload_img",
@@ -57,7 +69,8 @@ function uploadImages(product) {
 		},
 	});
 
-	for (var i = 0; i < imgUrls.length; i++) {
+	for (var i = 0; i < imgUrls.length; i++) 
+	{
 		var imgUrl = imgUrls[i];
 
 		console.log(imgUrl);
@@ -77,4 +90,7 @@ function uploadImages(product) {
 
 		//Do something
 	}
+}, 4000);
+
+	
 }

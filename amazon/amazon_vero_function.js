@@ -5,9 +5,17 @@
 var amazonBrandToCheck = getProductBrand();
 amazonBrandToCheck = amazonBrandToCheck.toLowerCase();
 var veroBrandDetectedList = [];
+var amazonTitle = getProductTitle();
+amazonTitle = amazonTitle.toLowerCase();
 
 
-scanForVero();
+
+
+if (window.location.href.indexOf("/dp/") > -1) {
+	scanForVero();
+  }
+
+
 
 
 
@@ -30,7 +38,7 @@ function isBrandVero() {
 		if (veroBrandDetectedList.length > 0) 
 		{
 
-			console.log(veroBrandDetectedList);
+			//console.log(veroBrandDetectedList);
 
 			var veroBrandsMessage = "VeroBrands: \n\n"+veroBrandDetectedList.toString().replace(/,/g, "\n");
 
@@ -64,50 +72,122 @@ function isBrandVero() {
 	});
 }
 
+function checkVeroInAmazonTitle(veroBrand, veroFilterType)
+{
+
+	var amazonTitleWords = amazonTitle.split(" ");
+
+	for (let index = 0; index < amazonTitleWords.length; index++) 
+	{
+		var amazonTitleWord = amazonTitleWords[index];
+
+		if (amazonTitleWord === veroBrand) 
+		{
+
+			var message = "\nTitle Contains " + veroFilterType+" :\n"+ veroBrand;
+			veroBrandDetectedList.push(message);
+		}
+		
+	}
+
+
+}
+
 function checkVeroBrandWithList(list) 
 {
 	return new Promise((resolve) => {
-		for (var index = 0; index < list.length; ++index) {
+		for (var index = 0; index < list.length; ++index) 
+		{
 			var veroBrand = list[index].toLowerCase();
 
-			if (veroBrand.includes(amazonBrandToCheck)) {
-				//push to array
-				veroBrandDetectedList.push(veroBrand);
+			if (veroBrand.includes(amazonBrandToCheck)) 
+			{
 
-				/*
-				console.log("Vero Detected");
-				console.log(veroBrand);
-				console.log(amazonBrandToCheck);
-				console.log("index: " + index);
-				*/
+				veroBrandDetectedList.push("\nveroBrand: \n"+veroBrand);
+
 			}
+
 
             if (amazonBrandToCheck.includes(veroBrand)) 
             {
-				//push to array
-				veroBrandDetectedList.push(veroBrand);
-				/*
-				console.log("Vero Detected");
-				console.log(veroBrand);
-				console.log(amazonBrandToCheck);
-				console.log("index: " + index);
-				*/
+
+				veroBrandDetectedList.push("\nveroBrand: \n"+veroBrand);
+
             }
-            
+			
+			/*
+			if (amazonTitle.includes(veroBrand)) 
+			{
+
+				veroBrandDetectedList.push("amazonTitle veroBrand: "+veroBrand);
+			}
+			*/
+
+			checkVeroInAmazonTitle(veroBrand,"veroBrand");
+
+
+
+			
           
             var veroBrandWithOutWhiteSpace = veroBrand.replace(/\s/g, "");
         
 			if (veroBrandWithOutWhiteSpace.includes(amazonBrandToCheck)) 
 			{
-				//push to array
-				veroBrandDetectedList.push(veroBrand);
 
-				/*
-				console.log("Vero Detected");
-				console.log(veroBrand);
-				console.log(amazonBrandToCheck);
-				console.log("index: " + index);
-				*/
+				veroBrandDetectedList.push("\nveroBrandWithOutWhiteSpace: \n"+veroBrandWithOutWhiteSpace);
+
+			}
+
+
+			if (amazonBrandToCheck.includes(veroBrandWithOutWhiteSpace)) 
+			{
+
+				veroBrandDetectedList.push("\nveroBrandWithOutWhiteSpace: \n"+veroBrandWithOutWhiteSpace);
+
+			}
+
+			/*
+			if (amazonTitle.includes(veroBrandWithOutWhiteSpace)) 
+			{
+
+				veroBrandDetectedList.push("amazonTitle veroBrandWithOutWhiteSpace: "+veroBrandWithOutWhiteSpace);
+			}
+			*/
+
+			checkVeroInAmazonTitle(veroBrandWithOutWhiteSpace,"veroBrandWithOutWhiteSpace");
+
+
+			var veroBrandWithoutInc = veroBrand;
+			veroBrandWithoutInc = veroBrandWithoutInc.replace(", inc","");
+			var veroBrandWithoutInc = veroBrandWithoutInc.replace("inc","");
+			var veroBrandWithoutInc = veroBrandWithoutInc.replace(",","");
+
+			//remove all strange characters
+			//
+			
+			/*
+			if (amazonTitle.includes(veroBrandWithoutInc)) 
+			{
+
+				veroBrandDetectedList.push("amazonTitle veroBrandWithoutInc: "+veroBrandWithoutInc);
+			}
+			*/
+
+			checkVeroInAmazonTitle(veroBrandWithoutInc,"veroBrandWithoutInc");
+
+			if (veroBrandWithoutInc.includes(amazonBrandToCheck)) 
+			{
+
+				veroBrandDetectedList.push("\nveroBrandWithoutInc: \n"+veroBrandWithoutInc);
+
+			}
+
+
+			if (amazonBrandToCheck.includes(veroBrandWithoutInc)) 
+			{
+
+				veroBrandDetectedList.push("\nveroBrandWithoutInc: \n"+veroBrandWithoutInc);
+
 			}
 
 
@@ -116,3 +196,6 @@ function checkVeroBrandWithList(list)
 		}
 	});
 }
+
+
+

@@ -29,9 +29,8 @@ function pasteTitle(product) {
 
 	var title = product.custom_title;
 
-	if(title.length > 80) 
-	{
-		title = title.substring(0,77) + "...";
+	if (title.length > 80) {
+		title = title.substring(0, 77) + "...";
 	}
 
 	document.querySelector("input#editpane_title").value = title;
@@ -71,8 +70,65 @@ function pasteBrand(product) {
 	select.value = "Unbranded";
 }
 
-function pasteNAToRequiredItemSpecifics() 
+function pasteItemSpecifics(product) 
 {
+	var itemSpecifics = product.tableSpecifics;
+
+	var fields = document.querySelectorAll("[name*='_st_']");
+
+	for (var index = 0; index < fields.length; index++) 
+	{
+		var field = fields[index];
+		var fieldName = field.getAttribute("fieldname");
+
+		console.log("\nChecking fieldName: "+fieldName);
+
+		if (fieldName) {
+			fieldName = fieldName.toLowerCase();
+
+			for (var i = 0; i < itemSpecifics.length; i++) 
+			{
+				var itemSpecific = itemSpecifics[i];
+				var label = itemSpecific.label.toLowerCase();
+
+				if (fieldName.includes(label)) 
+				{
+					console.log("\n\nFound: ");
+					console.log("fieldName: " + fieldName);
+					console.log("label: " + label);
+
+					if(!field.value)
+					{
+						console.log("Field Empty, enter itemspecific Value");
+						console.log("itemSpecific.value: "+itemSpecific.value);
+						field.value = itemSpecific.value;
+					}
+				}
+
+				if (label.includes(fieldName)) 
+				{
+					console.log("\n\nFound: ");
+					console.log("fieldName: " + fieldName);
+					console.log("label: " + label);
+
+					if(!field.value)
+					{
+						console.log("Field Empty, enter itemspecific Value");
+						console.log("itemSpecific.value: "+itemSpecific.value);
+						field.value = itemSpecific.value;
+					}
+				}
+			}
+
+
+
+		}
+	}
+
+
+}
+
+function pasteNAToRequiredItemSpecifics() {
 	//var reqdElms = document.getElementsByClassName("eib-selTgLbl reqd");
 	var reqdElms = document.getElementsByClassName("reqd");
 	for (let index = 0; index < reqdElms.length; index++) {
@@ -103,8 +159,7 @@ function pasteNAToRequiredItemSpecifics()
 		`[id="Listing.Item.ItemSpecific[Material]"]`
 	);
 
-	if (materialElm.length > 0) 
-	{
+	if (materialElm.length > 0) {
 		//console.log(materialElm[0]);
 		//console.log(materialElm[0].value);
 
@@ -119,13 +174,9 @@ function pasteNAToRequiredItemSpecifics()
 		}
 	}
 
+	var mpnElm = document.querySelectorAll(`[id="Listing.Item.ItemSpecific[MPN]`);
 
-	var mpnElm = document.querySelectorAll(
-		`[id="Listing.Item.ItemSpecific[MPN]`
-	);
-
-	if (mpnElm.length > 0) 
-	{
+	if (mpnElm.length > 0) {
 		//console.log(materialElm[0]);
 		//console.log(materialElm[0].value);
 
@@ -140,13 +191,11 @@ function pasteNAToRequiredItemSpecifics()
 		}
 	}
 
-
 	var typeElm = document.querySelectorAll(
 		`[id="Listing.Item.ItemSpecific[Type]`
 	);
 
-	if (typeElm.length > 0) 
-	{
+	if (typeElm.length > 0) {
 		//console.log(materialElm[0]);
 		//console.log(materialElm[0].value);
 
@@ -160,10 +209,6 @@ function pasteNAToRequiredItemSpecifics()
 			typeElm[0].value = "Does Not Apply";
 		}
 	}
-
-
-
-
 }
 
 function deleteOldBrand() {

@@ -52,7 +52,8 @@ if(window.location.href.includes("DraftURL"))
 
         //Paste brand showing original Brand
         pasteBrand(product);
-        pasteNAToRequiredItemSpecifics()
+        //pasteNAToRequiredItemSpecifics();
+        pasteItemSpecifics(product);
 
 
         setTimeout(() => 
@@ -61,6 +62,8 @@ if(window.location.href.includes("DraftURL"))
             uploadImages(product);
             pasteBrand(product);
            // pasteNAToRequiredItemSpecifics()
+
+           pasteNAToRequiredItemSpecifics();
         }, 6000);
         
 
