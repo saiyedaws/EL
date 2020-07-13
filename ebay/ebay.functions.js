@@ -72,7 +72,8 @@ function pasteBrand(product) {
 
 function pasteItemSpecifics(product) 
 {
-	var itemSpecifics = product.tableSpecifics;
+	//var itemSpecifics = product.tableSpecifics;
+	var itemSpecifics = product.filteredItemSpecifics;
 
 	var fields = document.querySelectorAll("[name*='_st_']");
 

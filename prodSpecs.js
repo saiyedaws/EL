@@ -1,108 +1,162 @@
-function findSpecific(itemSpecific) 
+function getItemSpecifics() 
 {
-	var itemSpecificValue;
+	var itemSpecifics = [];
+
+
 
 	//First Check
 	var table = document.querySelectorAll("#detail_bullets_id .content li");
 
-	for (var index = 0; index < table.length; index++) {
+	for (var index = 0; index < table.length; index++) 
+	{
 		var labelElement = table[index].getElementsByTagName("b")[0];
 
-		if (labelElement) {
+		if (labelElement) 
+		{
 			var label = labelElement.innerText.toLowerCase();
-
 			var value = labelElement.nextSibling.textContent;
 			value = value.replace(/\n  /g, "").trim();
 
-			if (label.includes(itemSpecific)) {
-				itemSpecificValue = value;
-				break;
+
+			var itemSpecific = 
+			{
+				label:label,
+				value:value
 			}
+	
+			itemSpecifics.push(itemSpecific);
+	
+
 		}
 	}
 
 	var productTableTrElements = document.querySelectorAll(
-		"div#prodDetails div.pdTab tr"
+		"div#prodDetails tr"
 	);
 
-	for (i = 0; i < productTableTrElements.length; i++) {
-		var trLabelElement = productTableTrElements[i].querySelectorAll(
+	for (i = 0; i < productTableTrElements.length; i++) 
+	{
+		var trLabelElement;
+		var trValueElement
+
+		trLabelElement = productTableTrElements[i].querySelectorAll(
 			"td.label"
 		)[0];
-		var trValueElement = productTableTrElements[i].querySelectorAll(
+		trValueElement = productTableTrElements[i].querySelectorAll(
 			"td.value"
 		)[0];
 
-		if (trLabelElement) {
-			if (trLabelElement.innerText.toLowerCase().includes(itemSpecific)) {
-				itemSpecificValue = trValueElement.innerText;
-				break;
+		if(!trLabelElement)
+		{
+			trLabelElement = productTableTrElements[i].querySelectorAll(
+				"tr th"
+			)[0];
+
+			trValueElement = productTableTrElements[i].querySelectorAll(
+				"tr td"
+			)[0];
+
+		}
+
+		if (trLabelElement) 
+		{
+
+			var label = trLabelElement.innerText.toLowerCase();
+			var value = trValueElement.innerText.toLowerCase();
+			value = value.replace(/\n  /g, "").trim();
+			
+	
+	
+			var itemSpecific = 
+			{
+				label:label,
+				value:value
 			}
+	
+			itemSpecifics.push(itemSpecific);
+	
 		}
+
 	}
 
-	return itemSpecificValue;
-}
 
-function getDimensions() {
-	var productDimensionsObject;
+	var variationElement = document.querySelectorAll('[id^="variation_"]')[0];
+	if(variationElement)
+	{
+		var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
+		var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
 
-	var productDimensions = findSpecific("product dimensions");
+		console.log(label);
+		console.log(value);
 
-	if (productDimensions) {
-		var regex = /^(?:[\(])?(\d*\.?\d+)\s*x\s*(\d*\.?\d+)\s*x\s*(\d*\.?\d+)\s*((?:cms?|in|inch|inches|mms?)\b|(?:[\"]))/g;
-		productDimensions = productDimensions.match(regex);
-
-		var dimensions = productDimensions.toString().split("x");
-		var dimensionRegex = /[1-9]\d*(\.\d+)?/g;
-
-		var length = dimensions[0].trim().match(dimensionRegex)[0];
-		var widith = dimensions[1].trim().match(dimensionRegex)[0];
-		var height = dimensions[2].trim().match(dimensionRegex)[0];
-
-		var unit = "cm";
-
-		if (productDimensions.includes("mm")) {
-			unit = "mm";
+		var itemSpecific = 
+		{
+			label:label,
+			value:value
 		}
 
-		if (productDimensions.includes("cm")) {
-			unit = "cm";
-		}
-
-		if (productDimensions.includes("in")) {
-			unit = "cm";
-		}
-
-		var productDimensionsObject = {
-			length: length,
-			widith: widith,
-			height: height,
-			unit: unit,
-		};
+		itemSpecifics.push(itemSpecific);
 	}
 
-	return productDimensionsObject;
+
+	return itemSpecifics;
 }
 
-function getShippingWeight() {
-	var shippingWeight = findSpecific("shipping weight");
 
-	var regex = /(\d*\.?\d+)\s?(\w+)/g;
-	shippingWeight = shippingWeight.match(regex)[0];
 
-	var decimalRegex = /[0-9]+(\.[0-9][0-9]?)?/g;
-	var unit = shippingWeight.replace(decimalRegex, "").trim().toLowerCase();
-	var shippingWeightValue = shippingWeight.match(decimalRegex)[0];
 
-	return {
-		shippingWeight: shippingWeightValue,
-		unit: unit,
-	};
+function filterItemSpecifics()
+{
+
+	var itemSpecifics = getItemSpecifics();
+
+	for (var i = itemSpecifics.length - 1; i >= 0; i--) 
+	{
+		var itemSpecific = itemSpecifics[i];
+		var label = itemSpecific.label.toLowerCase();
+
+
+
+		if(
+			label.includes("model")||
+			label.includes("amazon")||
+			label.includes("asin")||
+			label.includes("customer")||
+			label.includes("date")||
+			label.includes("rank")||
+			label.includes("brand")||
+			label.includes("mpn")||
+			label.includes("item-model-number") ||
+			label.includes("model-number") ||
+			label.includes("model") ||
+			label.includes("part number") ||
+			label.includes("mpn") ||
+			label.includes("item model number") ||
+			label.includes("model-number")||
+
+			//add more
+			label.includes("manufacture")||
+			label.includes("model")||
+			label.includes("model")||
+			label.includes("model")||
+			label.includes("model")||
+			label.includes("model")||
+			label.includes("model")||
+			label.includes("model")
+			
+		)
+		{
+			console.log("Bad label: "+label);
+		
+
+			itemSpecifics.splice(i, 1);
+		}
+
+
+		
+	}
+
+
+	return itemSpecifics;
+
 }
-
-var dimensions = getDimensions();
-var shippingWeight = getShippingWeight();
-
-console.log(dimensions);
-console.log(shippingWeight);

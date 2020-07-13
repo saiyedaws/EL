@@ -2,10 +2,9 @@
 // First at all check product page
 if(isProductPage()) 
 {
+    var product_data;
 
     removeUnwantedElements();
-
-   
     var bullet_points = getBulletPoints();
 
         // Filling of saving variable
@@ -26,6 +25,8 @@ if(isProductPage())
             desc_template: desc_template,
             mpn: getModelPartNumberList(),
             tableSpecifics: getTableSpecifics(),
+
+            filteredItemSpecifics: getFilteredItemSpecifics(),
 
             main_sd_images: getProductPictures(),
             main_hd_images: getHighResProductPictures(),
