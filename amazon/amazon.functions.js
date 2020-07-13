@@ -666,23 +666,31 @@ function getItemSpecifics()
 	}
 
 
-	var variationElement = document.querySelectorAll('[id^="variation_"]')[0];
-	if(variationElement)
+	var variationElements = document.querySelectorAll('[id^="variation_"]');
+
+	for (var index = 0; index < variationElements.length; index++) 
 	{
-		var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
-		var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
+		var variationElement = variationElements[index];
 
-		console.log(label);
-		console.log(value);
-
-		var itemSpecific = 
+		if(variationElement)
 		{
-			label:label,
-			value:value
+			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
+			var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
+	
+			console.log(label);
+			console.log(value);
+	
+			var itemSpecific = 
+			{
+				label:label,
+				value:value
+			}
+	
+			itemSpecifics.push(itemSpecific);
 		}
-
-		itemSpecifics.push(itemSpecific);
+		
 	}
+
 
 
 	return itemSpecifics;
