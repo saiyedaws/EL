@@ -161,7 +161,7 @@ async function uploadNormalImage(imageSource, imageTitle, ebayTab, imgWidth, img
 	var waterMarkUrl = localStorage.getItem("waterMarkUrl");
 
 	var img = await urlToImage(imageSource);
-	img = await flipImage(img);
+	//img = await flipImage(img);
 	img = await rotateImage(img, 5);
 	img = await resizeImage(img, imgWidth, imgHeight);
 
