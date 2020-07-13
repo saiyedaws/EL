@@ -97,7 +97,7 @@ setTimeout(() =>
 
 		console.log(imgUrl);
 
-		if(i < 11)
+		if(i < 10)
 		{
 			bg_port.postMessage({
 				from: "ebay",
