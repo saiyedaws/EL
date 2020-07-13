@@ -405,45 +405,7 @@ function getModelPartNumberList() {
 	return mpnList;
 }
 
-function getHighResProductPictures() {
-	var hiResImgs = [];
 
-	var imgBlock = document.getElementById("imageBlock_feature_div");
-	var javascriptBlock = imgBlock.getElementsByTagName("script")[1];
-
-	var jsFunction = javascriptBlock.innerText;
-
-	jsFunction = jsFunction.replace(/[^]*(?=var data)/g, "");
-	jsFunction = jsFunction.replace(
-		"A.trigger('P.AboveTheFold'); // trigger ATF event.",
-		""
-	);
-	jsFunction = jsFunction.replace(/(?<=return data;)[^]*/g, "");
-	jsFunction = jsFunction.replace(/'airyConfig.*/g, "");
-
-	var func = new Function(jsFunction);
-	var data = func();
-
-	var imageArray = data.colorImages.initial;
-
-	for (var i = 0; i < imageArray.length; i++) {
-		var hiResImg = imageArray[i].hiRes;
-		//console.log(i + "#  hiResImg: " + hiResImg);
-		//console.log(i + "#  type: " + typeof hiResImg);
-
-		if (
-			hiResImgs !== null &&
-			hiResImgs !== "" &&
-			hiResImgs !== "null" &&
-			typeof hiResImg === "string"
-		) {
-			hiResImgs.push(hiResImg);
-		}
-		//hiResImgs.push(hiResImg);
-	}
-
-	return hiResImgs;
-}
 
 
 function findSpecific(itemSpecific) 

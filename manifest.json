@@ -71,6 +71,7 @@
 
          "amazon/amazon.desc_template.js",
          "amazon/amazon.functions.js",
+         "amazon/amazon.img_function.js",
           "amazon/amazon.js",
 
           "amazon/amazon_vero_function.js",
