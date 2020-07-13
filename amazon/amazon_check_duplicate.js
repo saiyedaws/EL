@@ -8,12 +8,12 @@ if (window.location.href.indexOf("/dp/") > -1) {
     
         var skuList = res.skuList;
     
-        console.log(skuList);
+        //console.log(skuList);
     
         var asin = getAsin();
         var sku = btoa(asin);
     
-        console.log("skusku: "+sku + "skuList.length; "+skuList.length);
+        //console.log("skusku: "+sku + "skuList.length; "+skuList.length);
     
         var isItemDuplicate = false;
     
@@ -78,7 +78,7 @@ function addImgToDom(isItemDuplicate) {
 			img.height = "60";
 			//img.title = veroBrandsMessage;
 
-			var src = document.getElementById("bylineInfo");
+			var src = document.getElementById("productTitle");
 			src.appendChild(img);
 			resolve();
 		} else {
@@ -90,7 +90,7 @@ function addImgToDom(isItemDuplicate) {
 			img.width = "50";
 			img.height = "30";
 
-			var src = document.getElementById("bylineInfo");
+			var src = document.getElementById("productTitle");
 			src.appendChild(img);
 			resolve();
 		}

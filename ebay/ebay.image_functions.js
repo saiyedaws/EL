@@ -90,7 +90,7 @@ setTimeout(() =>
 
 		//Do something
 	}
-}, 4000);
+}, 6000);
 
 	
 }

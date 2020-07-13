@@ -28,8 +28,10 @@ if(isProductPage())
             tableSpecifics: getTableSpecifics(),
 
             main_sd_images: getProductPictures(),
-            main_hd_images: getHighResProductPictures()
+            main_hd_images: getHighResProductPictures(),
             
+            dimensions: getDimensions(),
+            shippingWeight: getShippingWeight(),
 
    
         };

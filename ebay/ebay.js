@@ -55,12 +55,17 @@ if(window.location.href.includes("DraftURL"))
         //pasteNAToRequiredItemSpecifics();
         pasteItemSpecifics(product);
 
+        //pasteShippingWeight(product);
+
+
 
         setTimeout(() => 
         {
 
             uploadImages(product);
             pasteBrand(product);
+            pasteShippingWeight(product);
+            pasteDimensions(product);
            // pasteNAToRequiredItemSpecifics()
 
            pasteNAToRequiredItemSpecifics();

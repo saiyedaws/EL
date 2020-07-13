@@ -215,3 +215,59 @@ function deleteOldBrand() {
 	var matchedElems = document.querySelectorAll("[n*='Brand']");
 	matchedElems[0].getElementsByTagName("button")[0].click();
 }
+
+
+function pasteShippingWeight(product)
+{
+	console.log("pasteShippingWeight");
+
+	if(product.shippingWeight)
+	{
+		console.log("pasteShippingWeight true");
+
+		try 
+		{
+			var shippingWeight = product.shippingWeight.value;
+			var shippingWeightUnit = product.shippingWeight.unit;
+
+			console.log("shippingWeight: "+shippingWeight);
+			console.log("shippingWeightUnit: "+shippingWeightUnit);
+
+			if(shippingWeightUnit === "g")
+			{
+				console.log("g");
+				document.querySelector("input#minorUnitWeight").value = shippingWeight;
+			}
+
+			if(shippingWeightUnit === "kg")
+			{
+				console.log("kg");
+				document.querySelector("input#majorUnitWeight").value = shippingWeight;
+			}
+		
+		} catch (error) {
+			console.log(error);
+		}
+
+	}
+}
+
+
+function pasteDimensions(product)
+{
+
+	var dimensions = product.dimensions;
+
+	if(dimensions)
+	{
+
+		if(dimensions.unit === "cm")
+		{
+			
+			document.querySelector("input#pkgLength").value = dimensions.length;
+			document.querySelector("input#pkgWidth").value = dimensions.width;
+			document.querySelector("input#pkgHeight").value = dimensions.height;
+		}
+
+	}
+}

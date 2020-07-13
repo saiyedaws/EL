@@ -53,7 +53,7 @@ function isBrandVero() {
 			img.height = "60";
 			img.title = veroBrandsMessage;
 
-			var src = document.getElementById("bylineInfo");
+			var src = document.getElementById("productTitle");
 			src.appendChild(img);
 			resolve();
 		} else {
@@ -65,7 +65,7 @@ function isBrandVero() {
 			img.width = "50";
 			img.height = "30";
 
-			var src = document.getElementById("bylineInfo");
+			var src = document.getElementById("productTitle");
 			src.appendChild(img);
 			resolve();
 		}

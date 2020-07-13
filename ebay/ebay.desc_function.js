@@ -60,12 +60,17 @@ function pasteDescription(product) {
 
 
 
-
+    desc_html = insensitiveReplaceAll(desc_html, "amazon.ca", "");
+    desc_html = insensitiveReplaceAll(desc_html, ".ca", "");
 
     desc_html = insensitiveReplaceAll(desc_html, "Read more", "");
 	desc_html = insensitiveReplaceAll(desc_html, "amazon", "");
 	desc_html = insensitiveReplaceAll(desc_html, "ebay", "");
-	desc_html = insensitiveReplaceAll(desc_html, "warranty", "");
+    desc_html = insensitiveReplaceAll(desc_html, "warranty", "");
+    
+
+    desc_html = insensitiveReplaceAll(desc_html, "warran-ty", "");
+
     desc_html = insensitiveReplaceAll(desc_html, "refund", "");
     
     desc_html = insensitiveReplaceAll(desc_html, "Email Address", "");

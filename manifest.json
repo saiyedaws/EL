@@ -23,7 +23,8 @@
     "contextMenus",
     "cookies",
     "history",
-    "https://*.ebay.ca/* "
+    "https://*.ebay.ca/* ",
+    "https://cors-anywhere.herokuapp.com/*"
 
 
   ],
