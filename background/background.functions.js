@@ -162,19 +162,20 @@ async function uploadNormalImage(imageSource, imageTitle, ebayTab, imgWidth, img
 
 	var img = await urlToImage(imageSource);
 	//img = await flipImage(img);
-	img = await rotateImage(img, 5);
+	img = await rotateImage(img, 0);
 	img = await resizeImage(img, imgWidth, imgHeight);
 
-  /*
+
+	/*
 	var imgWatermark = await urlToImage(waterMarkUrl);
 	imgWatermark = await resizeImage(
 		imgWatermark,
 		imgHeight * 0.4,
 		imgWidth * 0.4
-  );
-  
-  img = await addLogo(img, imgWatermark, 0.95);
-  */
+	);
+	img = await addLogo(img, imgWatermark, 0.3);
+		*/
+
 
 	upload(img.src, imageTitle, ebayTab);
 }
