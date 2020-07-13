@@ -49,14 +49,21 @@ function pasteUpc(product) {
 	}
 }
 
-function pickItemCondition() {
-	// New Item Condition
+function pickItemCondition() 
+{
+	try {
+			// New Item Condition
 	var select = document.querySelector("select#itemCondition");
 	select.value = "1000";
 
 	var evt = document.createEvent("HTMLEvents");
 	evt.initEvent("change", false, true);
 	select.dispatchEvent(evt);
+	} catch (error) 
+	{
+		console.log(error);
+	}
+
 }
 
 function pasteBrand(product) {

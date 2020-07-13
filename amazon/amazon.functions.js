@@ -148,8 +148,12 @@ function getProductDescription() {
 				.find("#iframeContent")
 				.html();
 		if (_q("#detail-bullets").length) desc_html += $("#detail-bullets").html();
-		if (_q("#featurebullets_feature_div").length)
-			desc_html += $("#featurebullets_feature_div").html();
+
+
+		//if (_q("#featurebullets_feature_div").length)
+		//	desc_html += $("#featurebullets_feature_div").html();
+
+
 		if (_q("#productDescription_feature_div").length)
 			desc_html += $("#productDescription_feature_div").html();
 	}
