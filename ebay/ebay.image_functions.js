@@ -21,12 +21,34 @@ function convertImgToBase64(url, callback, outputFormat) {
 function uploadImages(product) 
 {
 	//var imgUrls = product.main_sd_images;
-	var imgUrls = product.main_hd_images;
+	var sdImgs = product.main_sd_images;
+	var hdImgs = product.main_hd_images;
 
-	if(imgUrls.length < 1){
-		imgUrls = product.main_sd_images;
+
+	var imgUrls = [];
+	imgUrls = hdImgs;
+
+	if(imgUrls.length < 1)
+	{
+		imgUrls = sdImgs;
 	}
 
+
+	if(imgUrls.length < 12)
+	{
+		var totalImagesToAdd = 12 - imgUrls.length;
+
+		for (var index = 0; index < sdImgs.length; index++) 
+		{
+			var sdImg = sdImgs[index];
+
+			if(index<totalImagesToAdd && totalImagesToAdd > 0)
+			{
+				imgUrls.push(sdImg);
+			}
+		}
+
+	}
 
 
 	var imgName = product.custom_title;
@@ -75,7 +97,7 @@ setTimeout(() =>
 
 		console.log(imgUrl);
 
-		if(i < 10)
+		if(i < 11)
 		{
 			bg_port.postMessage({
 				from: "ebay",

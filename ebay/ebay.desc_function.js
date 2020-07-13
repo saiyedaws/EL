@@ -97,6 +97,12 @@ function pasteDescription(product) {
 
     desc_html = insensitiveReplaceAll(desc_html, "MONTH", "");
 
+    desc_html = insensitiveReplaceAll(desc_html, "30-day", "");
+    desc_html = insensitiveReplaceAll(desc_html, "money-back", "");
+    desc_html = insensitiveReplaceAll(desc_html, "30-day", "");
+    desc_html = insensitiveReplaceAll(desc_html, "3- free", "");
+    desc_html = insensitiveReplaceAll(desc_html, "replacement", "");
+
     
 
 

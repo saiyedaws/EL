@@ -303,7 +303,7 @@ function getProductPictures() {
 			if (current_img_src.split(/(I|G)\//g)[2].indexOf("/") !== -1) continue;
 
 			current_img_src = current_img_src.replace(
-				/(.+)\.(_\w+_)\.(jpg|png|jpeg)$/i,
+				/(.+)\.(_\w+_.*)\.(jpg|png|jpeg)$/i,
 				"$1._UL1500_.$3"
 			);
 

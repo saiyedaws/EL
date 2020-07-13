@@ -38,7 +38,9 @@ function getHiRes1()
 			hiResImgs !== "null" &&
 			typeof hiResImg === "string"
 		) {
-			hiResImgs.push(hiResImg);
+            if(hiResImg){
+                hiResImgs.push(hiResImg);
+            }
 		}
 		//hiResImgs.push(hiResImg);
 	}
@@ -67,7 +69,10 @@ function getHiRes2()
             var hiResImg = img.getAttribute("data-old-hires");
           //  console.log(hiResImg);
 
-            hiResImgs.push(hiResImg);
+            if(hiResImg){
+                hiResImgs.push(hiResImg);
+            }
+           
         }
    
         
