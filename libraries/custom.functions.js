@@ -13,3 +13,7 @@ function insensitiveReplaceAll(original, find, replace) {
     return str + remainder;
   }
   
+  function jsUcfirst(string) 
+  {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }

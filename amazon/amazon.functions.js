@@ -17,9 +17,18 @@ function getProductTitle() {
 function getFilteredTitle() {
 	var title = getProductTitle();
 	var brand = getProductBrand();
+	brand = brand.trim();
+
+	
+	//console.log("title: "+title);
+	//console.log("brand: "+brand);
 
 	//removing brand
 	var filteredTitle = insensitiveReplaceAll(title, brand, "");
+	filteredTitle = filteredTitle.replace(brand, "");
+
+
+	//console.log("filteredTitle: "+filteredTitle);
 
 	//removing any MPN from title
 	filteredTitle = filteredTitle.replace(/\b([A-Z]{3}[0-9].*?)\b/g, "");
@@ -92,8 +101,23 @@ function getPriceElement() {
 function getProductBrand() {
 	var brand = "";
 
-	if (_q("#bylineInfo").length) brand = $("#bylineInfo").text().trim();
-	else if (_q("#brand").length) brand = $("#brand").text().trim();
+	if (_q("#bylineInfo").length)
+	{
+	
+		brand = $("#bylineInfo").text().trim();
+		
+
+	}
+	else if (_q("#brand").length)
+	{
+	brand = $("#brand").text().trim();
+
+
+	} 
+
+	brand = insensitiveReplaceAll(brand,"Brand: ","");
+	brand = insensitiveReplaceAll(brand,"brand","");
+	brand = insensitiveReplaceAll(brand,":","");
 
 	return brand;
 }

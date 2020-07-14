@@ -81,6 +81,9 @@ function pasteItemSpecifics(product)
 {
 	//var itemSpecifics = product.tableSpecifics;
 	var itemSpecifics = product.filteredItemSpecifics;
+	var value = itemSpecific.value;
+	value = jsUcfirst(string);
+
 
 	var fields = document.querySelectorAll("[name*='_st_']");
 
@@ -105,11 +108,12 @@ function pasteItemSpecifics(product)
 					console.log("fieldName: " + fieldName);
 					console.log("label: " + label);
 
+				
 					if(!field.value)
 					{
 						console.log("Field Empty, enter itemspecific Value");
-						console.log("itemSpecific.value: "+itemSpecific.value);
-						field.value = itemSpecific.value;
+						console.log("itemSpecific.value: "+value);
+						field.value = value;
 					}
 				}
 
@@ -122,8 +126,8 @@ function pasteItemSpecifics(product)
 					if(!field.value)
 					{
 						console.log("Field Empty, enter itemspecific Value");
-						console.log("itemSpecific.value: "+itemSpecific.value);
-						field.value = itemSpecific.value;
+						console.log("itemSpecific.value: "+value);
+						field.value = value;
 					}
 				}
 			}
@@ -296,9 +300,27 @@ function pasteItemSpecific(label, value)
 
 			var xpath = "//a[text()=' + Add custom item specific']";
 			addItemSpecificElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+			
+
+			value = jsUcfirst(value);
+			label = jsUcfirst(label);
+			
+			//limit both to 65 characters
+			if (value.length > 64)
+			{
+
+				value = value.substring(0,62)+"...";
+			}
+			//limit both to 65 characters
+			if (value.length > 64)
+			{
+
+				value = value.substring(0,62)+"...";
+			}
+
+
+
 			addItemSpecificElement.click();
-	
-		
 			document.querySelectorAll("#_isTag")[0].value = label;
 			document.querySelectorAll("#_isVal")[0].value = value;
 		
@@ -306,10 +328,15 @@ function pasteItemSpecific(label, value)
 				$("a[id$=cancle]")[0].click();
 				resolve();
 			}
-			else{
+			else
+			{
 				$("#_isSave")[0].click();
 				resolve();
 			}
+
+
+		
+
 				
 	
 		} catch (e) 

@@ -26,7 +26,34 @@ function pasteDescription(product) {
  
     
     product.desc_template = product.desc_template.replace(/\[TITLE\]/, product.custom_title);
-    product.desc_template = product.desc_template.replace(/\[DESCRIPTION\]/, product.description);
+   
+    
+    //Product Description, check if its empty
+    var bullet_points_html = product.bullet_points_html;
+    var div = document.createElement('div');
+    div.innerHTML = bullet_points_html.trim();
+
+    var text;
+    try {
+        text = div.innerText;
+    text = text.replace(/\s/g,"").toLowerCase();
+    } catch (error) 
+    {
+        console.log(error);
+    }
+    
+
+
+    if(text === "productdescription")
+    {
+        product.desc_template = product.desc_template.replace(/\[DESCRIPTION\]/, product.description);
+    }else
+    {
+        product.desc_template = product.desc_template.replace(/\[DESCRIPTION\]/, "");
+    }
+
+
+   
     product.desc_template = product.desc_template.replace(/\[BULLETS\]/, product.bullet_points_html);
 
     desc_html = product.desc_template;
