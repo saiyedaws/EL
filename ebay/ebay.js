@@ -54,11 +54,12 @@ if(window.location.href.includes("DraftURL"))
         pasteBrand(product);
         //pasteNAToRequiredItemSpecifics();
         
-        pasteItemSpecifics(product);
+        //pasteItemSpecifics(product);
 
-        pasteFilteredItemSpecifics(product);
-        
-        //pasteShippingWeight(product);
+
+        //[pastes all the filtered ones as custom to ebay]
+        pasteCustomItemSpecifics(product);
+      
 
 
 
@@ -69,11 +70,15 @@ if(window.location.href.includes("DraftURL"))
             pasteBrand(product);
             pasteShippingWeight(product);
             pasteDimensions(product);
-           // pasteNAToRequiredItemSpecifics()
 
-           pasteNAToRequiredItemSpecifics();
+            pasteItemSpecifics(product);
+            pasteNAToRequiredItemSpecifics();
+           
+  
         }, 6000);
         
+
+
 
 
     });

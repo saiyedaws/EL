@@ -158,7 +158,7 @@ function pasteNAToRequiredItemSpecifics() {
 			) {
 				// Invalid... Box is empty
 				//console.log("Box is empty");
-				matchedEle.value = "N/A";
+				matchedEle.value = "Unavailable";
 			}
 		}
 	}
@@ -178,7 +178,7 @@ function pasteNAToRequiredItemSpecifics() {
 		) {
 			// Invalid... Box is empty
 			// console.log("Box is empty");
-			materialElm[0].value = "N/A";
+			materialElm[0].value = "Unavailable";
 		}
 	}
 
@@ -291,7 +291,13 @@ function pasteItemSpecific(label, value)
 		try {
 		
 	
-			document.querySelectorAll("#v4-26")[0].click();
+					
+			var addItemSpecificElement;
+
+			var xpath = "//a[text()=' + Add custom item specific']";
+			addItemSpecificElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+			addItemSpecificElement.click();
+	
 		
 			document.querySelectorAll("#_isTag")[0].value = label;
 			document.querySelectorAll("#_isVal")[0].value = value;
@@ -323,7 +329,7 @@ function pasteItemSpecific(label, value)
 }
 
 
-async function pasteFilteredItemSpecifics(product)
+async function pasteCustomItemSpecifics(product)
 {
 
 	var itemSpecifics = product.filteredItemSpecifics;

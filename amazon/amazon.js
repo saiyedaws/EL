@@ -18,7 +18,7 @@ if(isProductPage())
             custom_price: '',
             brand: getProductBrand(),
             sku: getAsin(),
-            upc: 'DOES NOT APPLY',
+            upc: 'Does Not Apply',
             description: getProductDescription(),
             bullet_points: bullet_points.list,
             bullet_points_html: bullet_points.html,
