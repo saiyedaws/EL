@@ -1,3 +1,4 @@
+
 function getItemSpecifics() 
 {
 	var itemSpecifics = [];
@@ -15,7 +16,7 @@ function getItemSpecifics()
 		{
 			var label = labelElement.innerText.toLowerCase();
 			var value = labelElement.nextSibling.textContent;
-			value = value.replace(/\n  /g, "").trim();
+			value = value.replace(/\n  /g, "").trim().toLowerCase();;
 
 
 			var itemSpecific = 
@@ -80,23 +81,39 @@ function getItemSpecifics()
 	}
 
 
-	var variationElement = document.querySelectorAll('[id^="variation_"]')[0];
-	if(variationElement)
+	var variationElements = document.querySelectorAll('[id^="variation_"]');
+
+	for (var index = 0; index < variationElements.length; index++) 
 	{
-		var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
-		var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
+		var variationElement = variationElements[index];
 
-		console.log(label);
-		console.log(value);
-
-		var itemSpecific = 
+		if(variationElement)
 		{
-			label:label,
-			value:value
-		}
+			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","").toLowerCase().trim();
 
-		itemSpecifics.push(itemSpecific);
+			var valueElement;
+
+			valueElement = variationElement.querySelectorAll(".selection")[0];
+			if(!valueElement){
+				valueElement = variationElement.querySelectorAll(".a-dropdown-prompt")[0];
+			}
+
+			var value = valueElement.innerText.trim().replace(":","").toLowerCase().trim();
+
+			console.log(label);
+			console.log(value);
+	
+			var itemSpecific = 
+			{
+				label:label,
+				value:value
+			}
+	
+			itemSpecifics.push(itemSpecific);
+		}
+		
 	}
+
 
 
 	return itemSpecifics;
@@ -105,7 +122,7 @@ function getItemSpecifics()
 
 
 
-function filterItemSpecifics()
+function getFilteredItemSpecifics()
 {
 
 	var itemSpecifics = getItemSpecifics();
@@ -146,7 +163,6 @@ function filterItemSpecifics()
 			
 		)
 		{
-			console.log("Bad label: "+label);
 		
 
 			itemSpecifics.splice(i, 1);
@@ -160,3 +176,9 @@ function filterItemSpecifics()
 	return itemSpecifics;
 
 }
+
+var itemSpecifics = getFilteredItemSpecifics();
+
+var uniqueArray = itemSpecifics.filter((v,i,a)=>a.findIndex(t=>(t.label === v.label))===i);
+
+console.log(uniqueArray);

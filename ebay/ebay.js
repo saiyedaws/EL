@@ -53,8 +53,11 @@ if(window.location.href.includes("DraftURL"))
         //Paste brand showing original Brand
         pasteBrand(product);
         //pasteNAToRequiredItemSpecifics();
+        
         pasteItemSpecifics(product);
 
+        pasteFilteredItemSpecifics(product);
+        
         //pasteShippingWeight(product);
 
 

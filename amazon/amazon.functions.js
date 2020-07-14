@@ -675,8 +675,16 @@ function getItemSpecifics()
 		if(variationElement)
 		{
 			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
-			var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
-	
+
+			var valueElement;
+
+			valueElement = variationElement.querySelectorAll(".selection")[0];
+			if(!valueElement){
+				valueElement = variationElement.querySelectorAll(".a-dropdown-prompt")[0];
+			}
+
+			var value = valueElement.innerText.trim().replace(":","");
+
 			console.log(label);
 			console.log(value);
 	
@@ -708,6 +716,7 @@ function getFilteredItemSpecifics()
 	{
 		var itemSpecific = itemSpecifics[i];
 		var label = itemSpecific.label.toLowerCase();
+		var value = itemSpecific.value.toLowerCase();
 
 
 
@@ -745,6 +754,18 @@ function getFilteredItemSpecifics()
 			itemSpecifics.splice(i, 1);
 		}
 
+
+
+		if(
+			value.includes("warranty")||
+			label.includes("warranty")
+			
+		)
+		{
+		
+
+			itemSpecifics.splice(i, 1);
+		}
 
 		
 	}

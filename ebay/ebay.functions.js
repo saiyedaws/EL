@@ -279,3 +279,67 @@ function pasteDimensions(product)
 
 	}
 }
+
+
+
+function pasteItemSpecific(label, value)
+{
+
+
+	return new Promise(resolve =>
+	{
+		try {
+		
+	
+			document.querySelectorAll("#v4-26")[0].click();
+		
+			document.querySelectorAll("#_isTag")[0].value = label;
+			document.querySelectorAll("#_isVal")[0].value = value;
+		
+			if ($("#_errTag").is(":visible")){
+				$("a[id$=cancle]")[0].click();
+				resolve();
+			}
+			else{
+				$("#_isSave")[0].click();
+				resolve();
+			}
+				
+	
+		} catch (e) 
+		{
+			console.log(e);
+			$("a[id$=cancle]")[0].click();
+			resolve();
+	
+		}
+
+
+	});
+
+	
+
+
+}
+
+
+async function pasteFilteredItemSpecifics(product)
+{
+
+	var itemSpecifics = product.filteredItemSpecifics;
+	//remove duplicates
+	itemSpecifics = itemSpecifics.filter((v,i,a)=>a.findIndex(t=>(t.label === v.label))===i);
+
+
+
+	for (var index = 0; index < itemSpecifics.length; index++) 
+	{
+		var itemSpecific = itemSpecifics[index];
+
+		var label = itemSpecific.label;
+		var value = itemSpecific.value;
+
+		await pasteItemSpecific(label, value);
+		
+	}
+}
