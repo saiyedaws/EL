@@ -1,4 +1,3 @@
-//var waterMarkUrl = 'https://centreforinquiry.ca/wp-content/uploads/2020/05/68353859-canadian-map-with-canada-flag.jpg';
 
 function uploadImgToEbay(payload) {
 	console.log("uploadImageBase64ToEbay");
@@ -33,7 +32,10 @@ function uploadImgToEbay(payload) {
 	});
 }
 
-//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71iSzLw6psL._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/61%2Bm6zKGFmL._AC_SL1000_.jpg", "DEWALT DCB205-2 20V MAX XR 5.0Ah Lithium Ion Battery, 2-Pack", "ebayTab");
+//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500);
+//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/61f1qVm%2BYxL._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/71eR2O5kG7L._AC_SL1500_.jpg", "Scented Candle Reflection Clarity Sea Salt Sage Medium w/ Natural Soy Wax Blend", "ebayTab",1500,1500);
+//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "Scented Candle Reflection Clarity Sea Salt Sage Medium w/ Natural Soy Wax Blend", "ebayTab",1500,1500);
+
 
 async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, imgWidth, imgHeight )
 {
@@ -47,45 +49,100 @@ async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, 
 	//console.log(imageTitle);
 
 
+	//var waterMarkUrl = 'https://centreforinquiry.ca/wp-content/uploads/2020/05/68353859-canadian-map-with-canada-flag.jpg';
+
 	var waterMarkUrl = localStorage.getItem("waterMarkUrl");
 
 	var img = await urlToImage(imageSource);
 	img = await flipImage(img);
-	img = await rotateImage(img, 5);
+	img = await rotateImage(img, 10);
 	img = await resizeImage(img, imgWidth, imgHeight);
+
 
 	var imgWatermark = await urlToImage(waterMarkUrl);
 	imgWatermark = await resizeImage(
 		imgWatermark,
-		imgHeight * 0.4,
-		imgWidth * 0.4
+		imgHeight * 0.45,
+		imgWidth * 0.45
 	);
+
   img = await addLogo(img, imgWatermark, 0.75);
 
+
   var sideImg = await urlToImage(sideImageUrl);
+  //addImgToDom(sideImg.src); 
+
+  sideImg = await addBoxToImage(sideImg);
+
+  //addImgToDom(sideImg.src); 
+
   sideImg = await flipImage(sideImg);
-  sideImg = await rotateImage(sideImg, 5);
+  sideImg = await rotateImage(sideImg, 10);
   
   sideImg = await resizeImage(
 		sideImg,
-		imgHeight * 0.4,
-		imgWidth * 0.4
+		imgHeight * 0.45,
+		imgWidth * 0.45
   );
   
+  //addImgToDom(sideImg.src); 
+ // img = await addTextToImage(img, imageTitle);
   img = await addSideImage(img, sideImg, 0.95);
+  img = await addTextToImage(img, imageTitle);
+
+
+  
   
 
 
 
-	img = await addTextToImage(img, imageTitle);
+//img = await addTextToImage(img, imageTitle);
 
 //console.log("Multi Img: ");
 //console.log(img.src);
 
-  upload(img.src, imageTitle, ebayTab);
-  
-  //addImgToDom(img.src); 
 
+upload(img.src, imageTitle, ebayTab);
+  
+ // addImgToDom(img.src); 
+
+}
+
+function addBoxToImage(img){
+	return new Promise(function (resolve, reject) 
+	{
+		let canvas = document.createElement("canvas");
+		canvas.width = img.width;
+		canvas.height = img.height;
+
+		//canvas.style = "border:20px solid black;";
+
+		let ctx = canvas.getContext("2d");
+		ctx.fillStyle = "white";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+		
+
+		ctx.drawImage(img, 0, 0,canvas.width,canvas.height);
+
+
+
+		ctx.strokeStyle = 'black';  // some color/style
+		ctx.lineWidth = 30;         // thickness
+		ctx.strokeRect(0, 0, canvas.width, canvas.height);
+    
+
+  
+
+
+		var imgFinal = new Image();
+
+		imgFinal.onload = function () {
+			resolve(imgFinal);
+		};
+		imgFinal.src = canvas.toDataURL();
+	});
 }
 
 function addSideImage(img, sideImg, opacity) 
@@ -104,16 +161,20 @@ function addSideImage(img, sideImg, opacity)
     ctx.globalAlpha = opacity;
     
 
-    var x = canvas.width - sideImg.width;
-    var y = canvas.height - sideImg.height - (canvas.height/12);
+    var x = canvas.width - sideImg.width - (canvas.width/50);
+	var y = canvas.height - sideImg.height - (canvas.height/8);
+	
+	//var y = canvas.height - sideImg.height ;
     
 
     ctx.drawImage(sideImg, x, y);
 
-    //drawing Border
+	//drawing Border
+	/*
     ctx.strokeStyle = 'black';  // some color/style
     ctx.lineWidth = 5;         // thickness
-    ctx.strokeRect(x, y, sideImg.width-10, sideImg.height);
+	ctx.strokeRect(x, y, sideImg.width-10, sideImg.height);
+	*/
 
     //drawing Border
     
@@ -148,6 +209,7 @@ async function uploadEditedImage(imageSource, imageTitle, ebayTab, imgWidth, img
 	img = await addLogo(img, imgWatermark, 0.75);
 
 	img = await addTextToImage(img, imageTitle);
+	//img = await addLogo(img, imgWatermark, 0.75);
 
 	upload(img.src, imageTitle, ebayTab);
 
@@ -221,18 +283,26 @@ function addTextToImage(img, text) {
 		var canvas = document.createElement("canvas");
 		canvas.id = "myCanvas";
 
-		var extraHeight = img.height / 10;
-		var fontSize = extraHeight * 0.45;
+	
+		var fontSize = (img.height / 10) * 0.45;
+		var extraHeight = fontSize + fontSize/2;
 
 		canvas.width = img.width;
-		canvas.height = img.height + fontSize;
+		canvas.height = img.height + extraHeight;
 
 		var ctx = canvas.getContext("2d");
 		ctx.fillStyle = "white";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-		ctx.fillStyle = "orange";
-		ctx.font = fontSize + "px Comic Sans MS";
+
+		var fontType = "Ariel Unicode MS";
+		var fontColor = "black";
+
+		//var fontColor = "orange";
+		//var fontType = "Comic Sans MS";
+
+		ctx.fillStyle = fontColor;
+		ctx.font = fontSize + "px "+fontType;
 		ctx.fillText(text, 0, fontSize);
 
 		ctx.drawImage(img, 0, extraHeight);
@@ -317,7 +387,7 @@ function resizeImage(img, x, y) {
 		ctx.globalAlpha = 0.95;
 
 		//Rotate
-		ctx.rotate((1 * Math.PI) / 180);
+		//ctx.rotate((1 * Math.PI) / 180);
 
 		ctx.drawImage(
 			img,
@@ -392,7 +462,17 @@ function addLogo(img, imgWatermark, opacity)
 
 		ctx.globalAlpha = opacity;
 
-		ctx.drawImage(imgWatermark, canvas.width - imgWatermark.width, 0-(canvas.height/10.75));
+		var imgWaterMarkWidth = imgWatermark.width *0.45;
+		var imgWaterMarkHeight = imgWatermark.height *0.45;
+
+		ctx.drawImage(imgWatermark, canvas.width - imgWaterMarkWidth,  0, imgWaterMarkWidth ,imgWaterMarkHeight);
+
+	//	ctx.drawImage(imgWatermark, canvas.width - imgWatermark.width, 0-(canvas.height/10.75), imgWatermark.width ,imgWatermark.height);
+		
+	
+
+		//ctx.drawImage(imgWatermark, canvas.width - imgWaterMarkWidth,  0, imgWaterMarkWidth ,imgWaterMarkHeight);
+
 
 		var imgFinal = new Image();
 
