@@ -55,7 +55,7 @@ async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, 
 
 	var img = await urlToImage(imageSource);
 	img = await flipImage(img);
-	img = await rotateImage(img, 10);
+	img = await rotateImage(img, 5);
 	img = await resizeImage(img, imgWidth, imgHeight);
 
 
@@ -161,8 +161,11 @@ function addSideImage(img, sideImg, opacity)
     ctx.globalAlpha = opacity;
     
 
-    var x = canvas.width - sideImg.width - (canvas.width/50);
-	var y = canvas.height - sideImg.height - (canvas.height/8);
+//bigger denominator makes it go right
+var x = canvas.width - sideImg.width - (canvas.width/50);
+	
+//bigger denominator makes it go down
+var y = canvas.height - sideImg.height - (canvas.height/12);
 	
 	//var y = canvas.height - sideImg.height ;
     

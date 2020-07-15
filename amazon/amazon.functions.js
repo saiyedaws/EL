@@ -630,8 +630,8 @@ function getItemSpecifics()
 
 			var itemSpecific = 
 			{
-				label:label,
-				value:value
+				label:label.trim(),
+				value:value.trim()
 			}
 	
 			itemSpecifics.push(itemSpecific);
@@ -679,8 +679,8 @@ function getItemSpecifics()
 	
 			var itemSpecific = 
 			{
-				label:label,
-				value:value
+				label:label.trim(),
+				value:value.trim()
 			}
 	
 			itemSpecifics.push(itemSpecific);
@@ -698,7 +698,7 @@ function getItemSpecifics()
 
 		if(variationElement)
 		{
-			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
+			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","").toLowerCase();
 
 			var valueElement;
 
@@ -707,15 +707,15 @@ function getItemSpecifics()
 				valueElement = variationElement.querySelectorAll(".a-dropdown-prompt")[0];
 			}
 
-			var value = valueElement.innerText.trim().replace(":","");
+			var value = valueElement.innerText.trim().replace(":","").toLowerCase();
 
 			console.log(label);
 			console.log(value);
 	
 			var itemSpecific = 
 			{
-				label:label,
-				value:value
+				label:label.trim(),
+				value:value.trim()
 			}
 	
 			itemSpecifics.push(itemSpecific);
@@ -793,6 +793,10 @@ function getFilteredItemSpecifics()
 
 		
 	}
+
+
+	//remove duplicates
+	itemSpecifics = itemSpecifics.filter((v,i,a)=>a.findIndex(t=>(t.label === v.label))===i);
 
 
 	return itemSpecifics;

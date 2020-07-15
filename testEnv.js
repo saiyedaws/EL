@@ -164,9 +164,11 @@ function addSideImage(img, sideImg, opacity)
 
     ctx.globalAlpha = opacity;
     
-
-    var x = canvas.width - sideImg.width - (canvas.width/50);
-	var y = canvas.height - sideImg.height - (canvas.height/8);
+//bigger denominator makes it go right
+	var x = canvas.width - sideImg.width - (canvas.width/50);
+	
+	//bigger denominator makes it go down
+	var y = canvas.height - sideImg.height - (canvas.height/14);
 	
 	//var y = canvas.height - sideImg.height ;
     

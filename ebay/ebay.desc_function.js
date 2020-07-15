@@ -139,6 +139,11 @@ function pasteDescription(product) {
     desc_html = insensitiveReplaceAll(desc_html, "BROWSER", "");
 
 
+    desc_html = insensitiveReplaceAll(desc_html, "E-Book", "");
+    desc_html = insensitiveReplaceAll(desc_html, "E-Mail", "");
+
+
+
     //remove links
     desc_html = desc_html.replace(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "");
     

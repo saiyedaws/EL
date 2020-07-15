@@ -69,8 +69,8 @@ function pasteItemSpecifics(product)
 {
 	//var itemSpecifics = product.tableSpecifics;
 	var itemSpecifics = product.filteredItemSpecifics;
-	var value = itemSpecific.value;
-	value = jsUcfirst(string);
+
+
 
 
 	var fields = document.querySelectorAll("[name*='_st_']");
@@ -89,6 +89,9 @@ function pasteItemSpecifics(product)
 			{
 				var itemSpecific = itemSpecifics[i];
 				var label = itemSpecific.label.toLowerCase();
+				
+				var value = itemSpecific.value;
+				value = jsUcfirst(string);
 
 				if (fieldName.includes(label)) 
 				{
@@ -348,10 +351,12 @@ async function pasteCustomItemSpecifics(product)
 {
 
 	var itemSpecifics = product.filteredItemSpecifics;
+
+	console.log("pasteCustomItemSpecifics: "+itemSpecifics);
 	//remove duplicates
 	itemSpecifics = itemSpecifics.filter((v,i,a)=>a.findIndex(t=>(t.label === v.label))===i);
 
-
+	console.log("pasteCustomItemSpecifics: "+itemSpecifics);
 
 	for (var index = 0; index < itemSpecifics.length; index++) 
 	{
