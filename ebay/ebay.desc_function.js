@@ -73,7 +73,9 @@ function pasteDescription(product) {
 
 
 
-    desc_html = insensitiveReplaceAll(desc_html, product.brand, "");
+    var brandToReplace = product.brand;
+    desc_html = insensitiveReplaceAll(desc_html, brandToReplace, "");
+
 
 
 
@@ -132,6 +134,13 @@ function pasteDescription(product) {
 
     desc_html = insensitiveReplaceAll(desc_html, "120-day", "");
 
+
+    desc_html = insensitiveReplaceAll(desc_html, "LINK", "");
+    desc_html = insensitiveReplaceAll(desc_html, "BROWSER", "");
+
+
+    //remove links
+    desc_html = desc_html.replace(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g, "");
     
 
 

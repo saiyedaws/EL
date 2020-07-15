@@ -1,16 +1,14 @@
-function pasteDraftTitle() 
+
+function promoteListing()
 {
+	document.getElementById("optinCheckbox").click();
 
+	var select = document.getElementById("adRate");
+	select.value = "3.1";
 
-		let messageObject = {
-			fpCmd: "titleSelected",
-			suggestedCategories: [],
-			title: "result..title",
-		};
-		setTimeout(function () {
-			window.postMessage(JSON.stringify(messageObject));
-		}, 200);
-
+	var evt = document.createEvent("HTMLEvents");
+	evt.initEvent("change", false, true);
+	select.dispatchEvent(evt);
 }
 
-pasteDraftTitle();
+promoteListing();
