@@ -93,10 +93,10 @@ function pasteDescription(product) {
     desc_html = insensitiveReplaceAll(desc_html, "Read more", "");
 	desc_html = insensitiveReplaceAll(desc_html, "amazon", "");
 	desc_html = insensitiveReplaceAll(desc_html, "ebay", "");
-    desc_html = insensitiveReplaceAll(desc_html, "warranty", "");
+    desc_html = insensitiveReplaceAll(desc_html, "warranty", "satisfaction");
     
 
-    desc_html = insensitiveReplaceAll(desc_html, "warran-ty", "");
+    desc_html = insensitiveReplaceAll(desc_html, "warran-ty", "satisfaction");
 
     desc_html = insensitiveReplaceAll(desc_html, "refund", "");
     
@@ -107,7 +107,7 @@ function pasteDescription(product) {
     desc_html = insensitiveReplaceAll(desc_html, "phone", "");
 
 
-    desc_html = insensitiveReplaceAll(desc_html, "GUARANTEE", "SATISFACTION");
+    desc_html = insensitiveReplaceAll(desc_html, "GUARANTEE", "SATISFACTION GUARANTEE");
     desc_html = insensitiveReplaceAll(desc_html, "MONEY BACK", "");
     desc_html = insensitiveReplaceAll(desc_html, "worry-free", "");
 
@@ -125,10 +125,12 @@ function pasteDescription(product) {
     desc_html = insensitiveReplaceAll(desc_html, "MONTH", "");
 
     desc_html = insensitiveReplaceAll(desc_html, "30-day", "");
-    desc_html = insensitiveReplaceAll(desc_html, "money-back", "");
+    desc_html = insensitiveReplaceAll(desc_html, "money-back", "satisfaction");
     desc_html = insensitiveReplaceAll(desc_html, "30-day", "");
     desc_html = insensitiveReplaceAll(desc_html, "3- free", "");
     desc_html = insensitiveReplaceAll(desc_html, "replacement", "");
+
+    desc_html = insensitiveReplaceAll(desc_html, "120-day", "");
 
     
 
