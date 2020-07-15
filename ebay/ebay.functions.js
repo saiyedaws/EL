@@ -61,8 +61,13 @@ function pasteBrand(product) {
 		console.log(error);
 	}
 
-	var select = document.getElementById("Listing.Item.ItemSpecific[Brand]");
-	select.value = "Unbranded";
+	try {
+		var select = document.getElementById("Listing.Item.ItemSpecific[Brand]");
+		select.value = "Unbranded";
+	} catch (error) {
+		
+	}
+
 }
 
 function pasteItemSpecifics(product) 
@@ -89,7 +94,7 @@ function pasteItemSpecifics(product)
 			{
 				var itemSpecific = itemSpecifics[i];
 				var label = itemSpecific.label.toLowerCase();
-				
+
 				var value = itemSpecific.value;
 				value = jsUcfirst(string);
 

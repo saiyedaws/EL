@@ -465,8 +465,8 @@ function addLogo(img, imgWatermark, opacity)
 
 		ctx.globalAlpha = opacity;
 
-		var imgWaterMarkWidth = imgWatermark.width *0.45;
-		var imgWaterMarkHeight = imgWatermark.height *0.45;
+		var imgWaterMarkWidth = imgWatermark.width *0.9;
+		var imgWaterMarkHeight = imgWatermark.height *0.9;
 
 		ctx.drawImage(imgWatermark, canvas.width - imgWaterMarkWidth,  0, imgWaterMarkWidth ,imgWaterMarkHeight);
 
