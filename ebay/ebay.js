@@ -52,7 +52,7 @@ if(window.location.href.includes("DraftURL"))
 
         //Paste brand showing original Brand
         pasteBrand(product);
-        //pasteNAToRequiredItemSpecifics();
+        pasteNAToRequiredItemSpecifics();
         
         //pasteItemSpecifics(product);
 
