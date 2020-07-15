@@ -48,7 +48,15 @@
     {
       "all_frames": true,
       "matches": ["*://bulksell.ebay.ca/ws/*", "*://*.picupload.ebay.ca/*"],
-      "js": ["libraries/jquery.min.js","libraries/htmlSanitizer.js","libraries/custom.functions.js", "ebay/ebay.functions.js","ebay/ebay.desc_function.js","ebay/ebay.image_functions.js", "ebay/ebay.js"],
+      "js": [
+        "libraries/jquery.min.js",
+        "libraries/htmlSanitizer.js",
+        "libraries/custom.functions.js",
+         "ebay/ebay.functions.js",
+         "ebay/ebay.desc_function.js",
+         "ebay/ebay.image_functions.js",
+         "ebay/ebay.paste_draft_function.js",
+          "ebay/ebay.js"],
       "css": ["ebay/ebay.css"],
       "run_at": "document_end"
     },
