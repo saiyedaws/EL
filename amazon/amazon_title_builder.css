@@ -1,13 +1,12 @@
 #the-textarea{
     -webkit-tap-highlight-color: transparent;
-font-family: inherit;
+font-family: "Ariel Unicode MS";
 line-height: 1.1;
-color: inherit;
 font-size: 30px;
 box-sizing: border-box;
 font-weight: 700;
 text-align: center;
-color: red;
+color: black;
 }
 
 .counted{

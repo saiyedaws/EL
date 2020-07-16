@@ -23,6 +23,7 @@ function uploadImages(product)
 	//var imgUrls = product.main_sd_images;
 	var sdImgs = product.main_sd_images;
 	var hdImgs = product.main_hd_images;
+	var color = product.extra.color;
 
 
 	var imgUrls = [];
@@ -72,6 +73,7 @@ function uploadImages(product)
 					mainImage: imgUrls[0],
 					sideImage: imgUrls[1],
 				},
+				color:color,
 
 				imgVariation: "multi_image",
 			},

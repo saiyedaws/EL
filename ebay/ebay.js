@@ -52,9 +52,9 @@ if(window.location.href.includes("DraftURL"))
 
         //Paste brand showing original Brand
         pasteBrand(product);
-        pasteNAToRequiredItemSpecifics();
+       // pasteNAToRequiredItemSpecifics();
         
-        //pasteItemSpecifics(product);
+        pasteItemSpecifics(product);
 
 
         //[pastes all the filtered ones as custom to ebay]
@@ -72,6 +72,7 @@ if(window.location.href.includes("DraftURL"))
             pasteDimensions(product);
 
             pasteItemSpecifics(product);
+
             pasteNAToRequiredItemSpecifics();
            
   

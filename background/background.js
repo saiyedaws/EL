@@ -140,7 +140,8 @@ chrome.extension.onConnect.addListener(function (port) {
 
 				// Update variables with received data
                 temp_storage.custom_title = request.title;
-                temp_storage.custom_price = request.price;
+				temp_storage.custom_price = request.price;
+				temp_storage.extra = request.extra;
 
 
 				// Update the product in storage

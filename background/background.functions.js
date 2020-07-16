@@ -24,22 +24,62 @@ function uploadImgToEbay(payload) {
     if (payload.imgVariation === "multi_image") 
     {
  
-      uploadMultiImage(payload.imgUrl.mainImage, payload.imgUrl.sideImage, payload.name, res.ebayTab, imgWidth, imgHeight);
+		var fontType = "Ariel Unicode MS";
+
+		//var fontColor = "black";
+		var fontColor = payload.color;
+	  uploadMultiImage(payload.imgUrl.mainImage, payload.imgUrl.sideImage, payload.name, res.ebayTab, imgWidth, imgHeight, fontColor, fontType);
+	  
+
     }
     
 
 
 	});
 }
-
-//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500);
-//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/61f1qVm%2BYxL._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/71eR2O5kG7L._AC_SL1500_.jpg", "Scented Candle Reflection Clarity Sea Salt Sage Medium w/ Natural Soy Wax Blend", "ebayTab",1500,1500);
-//uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "Scented Candle Reflection Clarity Sea Salt Sage Medium w/ Natural Soy Wax Blend", "ebayTab",1500,1500);
-
-
-async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, imgWidth, imgHeight )
+//test();
+function test()
 {
+	var fontType;
+var fontColor;
 
+fontType = "Ariel Unicode MS";
+fontColor = "orange";
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+
+
+fontType = "Ariel Unicode MS";
+fontColor = "green";
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+
+fontType = "Ariel Unicode MS";
+fontColor = "red";
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+
+
+fontType = "Ariel Unicode MS";
+fontColor = "blue";
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+
+
+
+fontType = "Ariel Unicode MS";
+fontColor = "black";
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
+
+
+
+}
+
+
+
+async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, imgWidth, imgHeight, fontColor, fontType  )
+{
 
 
 
@@ -49,9 +89,9 @@ async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, 
 	//console.log(imageTitle);
 
 
-	//var waterMarkUrl = 'https://centreforinquiry.ca/wp-content/uploads/2020/05/68353859-canadian-map-with-canada-flag.jpg';
+	var waterMarkUrl = 'https://centreforinquiry.ca/wp-content/uploads/2020/05/68353859-canadian-map-with-canada-flag.jpg';
 
-	var waterMarkUrl = localStorage.getItem("waterMarkUrl");
+	//var waterMarkUrl = localStorage.getItem("waterMarkUrl");
 
 	var img = await urlToImage(imageSource);
 	img = await flipImage(img);
@@ -88,7 +128,7 @@ async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, 
   //addImgToDom(sideImg.src); 
  // img = await addTextToImage(img, imageTitle);
   img = await addSideImage(img, sideImg, 0.95);
-  img = await addTextToImage(img, imageTitle);
+  img = await addTextToImage(img, imageTitle, fontColor, fontType);
 
 
   
@@ -281,7 +321,21 @@ function base64ToImage(imageSource) {
 	});
 }
 
-function addTextToImage(img, text) {
+
+async function addTextToImage(img, text, fontColor, fontType)
+{
+
+	var totalLines = await getTotalLines(img, text,  fontColor, fontType);
+	console.log("addTextToImage totalLines: "+totalLines);
+	var img = await addTextToImageFunction(img, text, totalLines,  fontColor, fontType);
+
+	return img;
+}
+
+function addTextToImageFunction(img, text, totalLines, fontColor, fontType) 
+{
+
+
 	return new Promise(function (resolve, reject) {
 		var canvas = document.createElement("canvas");
 		canvas.id = "myCanvas";
@@ -289,26 +343,47 @@ function addTextToImage(img, text) {
 	
 		var fontSize = (img.height / 10) * 0.45;
 		var extraHeight = fontSize + fontSize/2;
+		var x = 0;
+		var y = fontSize;
+
+		//var totalLines =1;
+		////totalLines = await getTotalLines(img, text, x, y);
+		//console.log("totalLines: "+ totalLines);
 
 		canvas.width = img.width;
-		canvas.height = img.height + extraHeight;
+        canvas.height = img.height + extraHeight*totalLines;
+
 
 		var ctx = canvas.getContext("2d");
 		ctx.fillStyle = "white";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+		
 
-		var fontType = "Ariel Unicode MS";
-		var fontColor = "black";
+		
+
+		var maxWidth = canvas.width;
+		var lineHeight = canvas.height * (70/1500);
+
+
+
+		
+  
 
 		//var fontColor = "orange";
 		//var fontType = "Comic Sans MS";
 
 		ctx.fillStyle = fontColor;
 		ctx.font = fontSize + "px "+fontType;
-		ctx.fillText(text, 0, fontSize);
 
-		ctx.drawImage(img, 0, extraHeight);
+
+
+
+
+
+		wrapText(ctx, text, x, y, maxWidth, lineHeight);
+
+		ctx.drawImage(img, 0, extraHeight*totalLines);
 
 		let img2 = new Image();
 		img2.crossOrigin = "anonymous";
@@ -319,6 +394,97 @@ function addTextToImage(img, text) {
 		};
 	});
 }
+
+//
+function getTotalLines(img, text, fontColor, fontType)
+{
+
+	return new Promise(resolve =>
+		{
+			var canvas = document.createElement("canvas");
+			canvas.id = "myCanvas";
+
+			var fontSize = (img.height / 10) * 0.45;
+		var extraHeight = fontSize + fontSize/2;
+		var x = 0;
+		var y = fontSize;
+
+	
+		canvas.width = img.width;
+        //canvas.height = img.height + extraHeight;
+        canvas.height = img.height;
+	
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "white";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+	
+		var maxWidth = canvas.width;
+		var lineHeight = canvas.height * (70/1500);
+
+		ctx.fillStyle = fontColor;
+		ctx.font = fontSize + "px "+fontType;
+
+				//ctx.fillText(text, 0, fontSize);
+			var totalLines =1;
+			//console.log("totalLines: "+ totalLines);
+				
+				
+	
+		var words = text.split(' ');
+		var line = '';
+		
+	
+		for(var n = 0; n < words.length; n++) 
+		{
+		  var testLine = line + words[n] + ' ';
+		  var metrics = ctx.measureText(testLine);
+		  var testWidth = metrics.width;
+		  if (testWidth > maxWidth && n > 0) 
+		  {
+			totalLines++;
+			 
+			ctx.fillText(line, x, y);
+			line = words[n] + ' ';
+			y += lineHeight;
+		  }
+		  else 
+		  {
+			line = testLine;
+			
+		  }
+		}
+		
+		
+	
+		resolve(totalLines);
+	})
+
+	
+
+}
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) 
+{
+	var words = text.split(' ');
+	var line = '';
+
+	for(var n = 0; n < words.length; n++) 
+	{
+	  var testLine = line + words[n] + ' ';
+	  var metrics = ctx.measureText(testLine);
+	  var testWidth = metrics.width;
+	  if (testWidth > maxWidth && n > 0) {
+		ctx.fillText(line, x, y);
+		line = words[n] + ' ';
+		y += lineHeight;
+	  }
+	  else {
+		line = testLine;
+	  }
+	}
+	ctx.fillText(line, x, y);
+  }
 
 function flipImage(img) {
 	return new Promise(function (resolve, reject) {

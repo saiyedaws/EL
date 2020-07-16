@@ -96,7 +96,12 @@ function pasteItemSpecifics(product)
 				var label = itemSpecific.label.toLowerCase();
 
 				var value = itemSpecific.value;
-				value = jsUcfirst(string);
+				try {
+					value = jsUcfirst(string);
+				} catch (error) {
+					
+				}
+				
 
 				if (fieldName.includes(label)) 
 				{
@@ -282,7 +287,7 @@ function pasteDimensions(product)
 
 
 
-function pasteItemSpecific(label, value)
+function pasteCustomItemSpecific(label, value)
 {
 
 
@@ -355,6 +360,7 @@ function pasteItemSpecific(label, value)
 async function pasteCustomItemSpecifics(product)
 {
 
+	var exitingFieldNames = getExistingFieldNames();
 	var itemSpecifics = product.filteredItemSpecifics;
 
 	console.log("pasteCustomItemSpecifics: "+itemSpecifics);
@@ -370,7 +376,40 @@ async function pasteCustomItemSpecifics(product)
 		var label = itemSpecific.label;
 		var value = itemSpecific.value;
 
-		await pasteItemSpecific(label, value);
+		
+	
+		if(!exitingFieldNames.includes(label))
+		{
+			await pasteCustomItemSpecific(label, value);
+		}
+		
 		
 	}
 }
+
+
+
+
+
+
+function getExistingFieldNames() {
+	var exitingFieldNames = [];
+	var fields = document.querySelectorAll("[name*='_st_']");
+
+	for (var index = 0; index < fields.length; index++) {
+		var field = fields[index];
+		var fieldName = field.getAttribute("fieldname");
+
+		if (fieldName) {
+			exitingFieldNames.push(fieldName.toLowerCase().trim());
+		}
+	}
+
+	exitingFieldNames = exitingFieldNames = exitingFieldNames.filter(
+		(v, i, a) => a.findIndex((t) => t === v) === i
+	);
+
+	return exitingFieldNames;
+}
+
+

@@ -33,6 +33,7 @@ if(isProductPage())
             
             dimensions: getDimensions(),
             shippingWeight: getShippingWeight(),
+            extra: {},
 
    
         };

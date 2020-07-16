@@ -1,17 +1,64 @@
+function addColorDropDown()
+{
+				//drop down for color
+				var colorDropDown = document.createElement("select");
+				colorDropDown.id = "color_id";
+				colorDropDown.appendChild(new Option("black", "black"));
+				colorDropDown.appendChild(new Option("red", "red"));
+				colorDropDown.appendChild(new Option("blue", "blue"));
+				colorDropDown.appendChild(new Option("green", "green"));
+				colorDropDown.appendChild(new Option("purple", "purple"));
+				colorDropDown.appendChild(new Option("orange", "orange"));
+				colorDropDown.appendChild(new Option("yellow", "yellow"));
+			
+				document.body.prepend(colorDropDown);
+			
+
+
+			function changeTextColor()
+			{
+				var value = document.getElementById("color_id").value;
+
+				var textArea = document.getElementById("the-textarea");
+
+				textArea.style.color=value;
+				//alert(value);
+			}
+
+			document.getElementById("color_id").onchange = changeTextColor;
+
+
+}
+
 if (window.location.href.indexOf("/dp/") > -1) 
 {
 	let _e = (ID) => document.getElementById(ID), // It is just a shortcut
 		bg_port = chrome.runtime.connect({ name: "amazon" }); // Establishment a connection with the background
 
-	// 1. Create the button
+
+
+		addColorDropDown();
+
+
+
+
+
+	// 2. Create the button
 	var button = document.createElement("button");
 	button.innerHTML = "List To ebay";
 	button.id = "list";
 
 	document.body.prepend(button);
 
+
+
+
+
+
+
 	// 3. Add event handler
-	button.addEventListener("click", function () {
+	button.addEventListener("click", function () 
+	{
 		// Send a message to the background with new values
 
 		var title = $("#the-textarea").val();
@@ -22,6 +69,11 @@ if (window.location.href.indexOf("/dp/") > -1)
 			type: "create_ebay_tab",
 			title: title,
 			price: price,
+
+			extra: {
+				color: document.getElementById("color_id").value
+			}
+			
 		});
 	});
 
@@ -102,7 +154,8 @@ if (window.location.href.indexOf("/dp/") > -1)
 			var words = element.innerText.split(" ");
 			var stringWithTag = "";
 
-			for (let index = 0; index < words.length; index++) {
+			for (let index = 0; index < words.length; index++) 
+			{
 				var word = words[index];
 				word = "<mark>" + word + "</mark>";
 				stringWithTag += " " + word;
