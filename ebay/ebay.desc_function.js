@@ -88,7 +88,8 @@ function pasteDescription(product) {
 
 
 
-
+    desc_html = insensitiveReplaceAll(desc_html, "full refund", "resolution");
+    
     desc_html = insensitiveReplaceAll(desc_html, "amazon.ca", "");
     desc_html = insensitiveReplaceAll(desc_html, ".ca", "");
 
@@ -100,7 +101,7 @@ function pasteDescription(product) {
 
     desc_html = insensitiveReplaceAll(desc_html, "warran-ty", "satisfaction");
 
-    desc_html = insensitiveReplaceAll(desc_html, "refund", "");
+    desc_html = insensitiveReplaceAll(desc_html, "refund", "satisfaction");
     
     desc_html = insensitiveReplaceAll(desc_html, "Email Address", "");
     desc_html = insensitiveReplaceAll(desc_html, "Email", "");

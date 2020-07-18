@@ -498,18 +498,35 @@ function findSpecific(itemSpecific)
 
 
 
-	var variationElement = document.querySelectorAll('[id^="variation_"]')[0];
-	if(variationElement)
-	{
-		var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","");
-		var value = variationElement.querySelectorAll(".selection")[0].innerText.trim().replace(":","");
+	var variationElements = document.querySelectorAll('[id^="variation_"]');
 
-		if (label.toLowerCase().includes(itemSpecific)) 
+	for (var index = 0; index < variationElements.length; index++) 
+	{
+		var variationElement = variationElements[index];
+
+		if(variationElement)
 		{
-			itemSpecificValue = value;
-			
-		}
+			var label = variationElement.querySelectorAll(".a-form-label")[0].innerText.trim().replace(":","").toLowerCase();
+
+			var valueElement;
+
+			valueElement = variationElement.querySelectorAll(".selection")[0];
+			if(!valueElement){
+				valueElement = variationElement.querySelectorAll(".a-dropdown-prompt")[0];
+			}
+
+			var value = valueElement.innerText.trim().replace(":","").toLowerCase();
+
 	
+		
+			if (label.toLowerCase().includes(itemSpecific)) 
+			{
+				itemSpecificValue = value;
+				break;
+				
+			}
+		}
+		
 	}
 
 	return itemSpecificValue;
