@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) =>
     // When it received request with type 'start_inserting', it need to run processing
     if(request.type === 'start_inserting') 
     {
+        console.log("start_inserting begins");
 
         pasteDraftTitle();
 

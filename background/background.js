@@ -158,25 +158,39 @@ chrome.extension.onConnect.addListener(function (port) {
 							"http://bulksell.ebay.ca/ws/eBayISAPI.dll?SingleList&sellingMode=AddItem",
 						active: true,
 					},
-					function (tab) {
+					function (tab) 
+					{
 						// Ask tab for script executing
 						// It is necessary, because it needs to make query after document if completely loaded
-						chrome.tabs.executeScript(
-							tab.id,
-							{
-								code: 'console.log("Inserting product starts..")',
-								runAt: "document_end",
-							},
-							() => {
-								// Send request that says ebay's listener that it needs to start inserting from storage
-								ebayTab = tab.id;
 
-								chrome.storage.local.set({ ebayTab: ebayTab });
+						console.log(`Tab Created from amazon, tabId of created ebayDraft is: ${tab.id}`);
+
+						setTimeout(() => {
+							chrome.tabs.executeScript(
+								tab.id,
+								//null,
+								{
+									code: 'console.log("Inserting product starts..")',
+									runAt: "document_end",
+									//runAt: "document_start",
+								},
+								() => {
+	
+									console.log("Executed  script, starting callback");
+	
+									// Send request that says ebay's listener that it needs to start inserting from storage
+									ebayTab = tab.id;
+	
+									chrome.storage.local.set({ ebayTab: ebayTab });
+	
+	
+									chrome.tabs.sendMessage(ebayTab, { type: "start_inserting" });
+								}
+							);
+						}, 2000);
 
 
-								chrome.tabs.sendMessage(ebayTab, { type: "start_inserting" });
-							}
-						);
+
 					}
 				);
 			}

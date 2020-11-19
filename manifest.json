@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Ebay Lister",
-  "version": "0.1",
+  "name": "Ebay Lister 2",
+  "version": "1.4",
   "permissions": [
     "*://amazon.ca/*",
     "*://amazon.com/*",
@@ -106,7 +106,7 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": ["background/background.config.js", "background/background.functions.js", "background/background.js", "background/background.tracker.js"]
+    "scripts": ["background/background.config.js", "background/background.functions.js", "background/background.js", "background/background.tracker.js", "background/background_image_upload.js"]
     
   }
 }

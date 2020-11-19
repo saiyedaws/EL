@@ -1,5 +1,6 @@
 
-function uploadImgToEbay(payload) {
+function uploadImgToEbay(payload) 
+{
 	console.log("uploadImageBase64ToEbay");
 	console.log(payload);
 
@@ -37,44 +38,6 @@ function uploadImgToEbay(payload) {
 
 	});
 }
-//test();
-function test()
-{
-	var fontType;
-var fontColor;
-
-fontType = "Ariel Unicode MS";
-fontColor = "orange";
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-
-
-fontType = "Ariel Unicode MS";
-fontColor = "green";
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-
-fontType = "Ariel Unicode MS";
-fontColor = "red";
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-
-
-fontType = "Ariel Unicode MS";
-fontColor = "blue";
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-
-
-
-fontType = "Ariel Unicode MS";
-fontColor = "black";
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-uploadMultiImage("https://images-na.ssl-images-amazon.com/images/I/71Gu95-2m3L._AC_SL1500_.jpg", "https://images-na.ssl-images-amazon.com/images/I/91lzSJHMBcL._AC_SL1500_.jpg", "North Stainless Steel Vacuum Insulated 5 Piece Tumbler Set 30 oz Travel Mug for Home Office School Like Yeti Tumbler for Ice Drink Hot Beverage", "ebayTab",1500,1500, fontColor, fontType);
-
-
-
-}
 
 
 
@@ -94,8 +57,8 @@ async function uploadMultiImage(imageSource, sideImageUrl, imageTitle, ebayTab, 
 	//var waterMarkUrl = localStorage.getItem("waterMarkUrl");
 
 	var img = await urlToImage(imageSource);
-	img = await flipImage(img);
-	img = await rotateImage(img, 5);
+	//img = await flipImage(img);
+	//img = await rotateImage(img, 5);
 	img = await resizeImage(img, imgWidth, imgHeight);
 
 
@@ -146,6 +109,7 @@ upload(img.src, imageTitle, ebayTab);
   
  // addImgToDom(img.src); 
 
+ return 'done';
 }
 
 function addBoxToImage(img){
@@ -239,8 +203,8 @@ async function uploadEditedImage(imageSource, imageTitle, ebayTab, imgWidth, img
 	var waterMarkUrl = localStorage.getItem("waterMarkUrl");
 
 	var img = await urlToImage(imageSource);
-	img = await flipImage(img);
-	img = await rotateImage(img, 5);
+	//img = await flipImage(img);
+	//img = await rotateImage(img, 5);
 	img = await resizeImage(img, imgWidth, imgHeight);
 
 	var imgWatermark = await urlToImage(waterMarkUrl);
@@ -295,10 +259,12 @@ function addImgToDom(imgSrc)
 }
 
 
-function upload(b64Image, imageTitle, ebayTab) {
+function upload(b64Image, imageTitle, ebayTab) 
+{
 	var imgName = imageTitle + ".jpg";
 
-	chrome.tabs.sendMessage(ebayTab, {
+	chrome.tabs.sendMessage(ebayTab, 
+	{
 		type: "ON_UPLOAD_BASE64_IMG",
 		payload: {
 			content: b64Image,
